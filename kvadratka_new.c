@@ -111,22 +111,27 @@ int Movement(){
     double a = 0;
     double b = 0;
     double c = 0;
+ 
     double x1 = 0;
     double x2 = 0;
-    char A[] = "a";
-    char B[] = "b";
-    char C[] = "c";
+ 
+    char A = 'a';
+    char B = 'b';
+    char C = 'c';
 
     printf("This program can solve kvadratic equations ax^2+bx+c=0.\n");
-    if (!input(&a, *A)){return -1;}
-    if (!input(&b, *B)){return -1;}
-    if (!input(&c, *C)){return -1;}
-    int res;
+    if (!input(&a, *A) || !input(&b, *B) || !input(&c, *C){
+      return -1;
+    }
+        
+    int res = 0;
     res = Kvadratic_solution(a, b, c, &x1, &x2);
+    
     if (res == 8){printf("X - each rational number.\n");}
     else if (res == 0){printf("No rational roots.\n");}
     else if (res == 1){printf("x = %f\n", x1);}
     else if (res == 2){printf("x1 = %f, x2 = %f\n", x1, x2);}
     else{return -1;}
+        
     return 0;
 }

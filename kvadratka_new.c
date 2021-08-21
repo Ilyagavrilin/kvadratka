@@ -125,7 +125,7 @@ int Movement(){
     char C = 'c';
 
     printf("This program can solve kvadratic equations ax^2+bx+c=0.\n");
-    if (!input(&a, *A) || !input(&b, *B) || !input(&c, *C){
+    if (!input(&a, A) || !input(&b, B) || !input(&c, C)){
       return -1;
     }
         

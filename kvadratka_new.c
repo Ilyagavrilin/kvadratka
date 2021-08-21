@@ -22,10 +22,15 @@ int Kvadratic_solution(double a, double b, double c, double *x1, double *x2);
 /* runs main program, returns false in cause of error*/
 int Movement();
 
-/*int Tests()???*/
+int Tests();
 
 
 int main(){
+    if (!Tests()){
+            printf("Error.\n");
+            return 0;}
+    else{
+        printf("Tests successfully passed.\n");
     if (Movement() != -1){return 0;}
     else{
         printf("Error.\n");
@@ -139,4 +144,29 @@ int Movement(){
     else{return -1;}
         
     return 0;
+}
+ 
+ 
+ int Tests(){
+    int a[5] = {0, 1, 0, 0, 1};
+    int b[5] = {0,0, 2, 0, 4};
+    int c[5] = {0,0, -6, 1, 3};
+    int r_x1[5] = {0, 0, 3, 0, -1};
+    int r_x2[5] = {0, 0, 0, 0, -3};
+    int res[5] = {8, 1, 1, 0, 2};
+
+    int result = 0;
+
+    for (int i = 0; i < 5; i++){
+        double x1 = 0;
+        double x2 = 0;
+
+        result = Kvadratic_solution(a[i], b[i], c[i], &x1, &x2);
+
+        if ((int)x1 != r_x1[i] || (int) x2 != r_x2[i] || result != res[i]){
+            printf("Code failed on test %d.\n", i + 1);
+            return 0;
+        }
+    }
+    return 1;
 }

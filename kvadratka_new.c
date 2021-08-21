@@ -6,17 +6,22 @@
 
 /* inputs double number, write on display name of variable, returns true/false */
 int input(double *factor, char name);
+
 /* if number is zero returns true, other returns false */
 int is_zero(double num);
+
 /*solution of linear equation(ax + b = 0), write answer in variable x,
 can operate with a == 0 and/or b == 0, returns number of roots (8 means infinity),  error code is -1*/
 int Linear_solution(double a, double b, double *x);
+
 /*solution of kvadratic equation(ax^2 + bx + c = 0), write answer in variable x1 and x2,
  if answer is the only one writes it in x1, x2 don't changes,
 can operate with a == 0 and/or b == 0 and/or c == 0, returns number of roots(0, 1 ,2, 8) (8 means infinity), error code is -1*/
 int Kvadratic_solution(double a, double b, double c, double *x1, double *x2);
+
 /* runs main program, returns false in cause of error*/
 int Movement();
+
 /*int Tests()???*/
 
 

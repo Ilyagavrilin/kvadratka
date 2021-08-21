@@ -31,6 +31,7 @@ int main(){
             return 0;}
     else{
         printf("Tests successfully passed.\n");
+    }
     if (Movement() != -1){return 0;}
     else{
         printf("Error.\n");

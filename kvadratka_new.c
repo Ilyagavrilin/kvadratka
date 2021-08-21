@@ -48,7 +48,7 @@ int input(double *factor, char name){
 
 
 int is_zero(double num){
-        if (num>-(10e-8) && num < 10e-8){
+        if (num > -(10e-8) && num < 10e-8){
             return TRUE;
         }
         else{

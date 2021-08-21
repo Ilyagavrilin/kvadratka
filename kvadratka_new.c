@@ -110,6 +110,10 @@ int Kvadratic_solution(double a, double b, double c, double *x1, double *x2){
 
             return 2;
         }
+        else if (is_zero(D)){
+            *x1 = -b/(2*a);
+            return 1; 
+        }
 
         else{
             return 0;

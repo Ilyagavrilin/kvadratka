@@ -14,7 +14,7 @@ void disc_solution(float D, float a, float b){
 
 int main(){
     setlocale(LC_ALL, "Rus");
-    float a;
+    /*float a;
     float b;
     float c;
     printf("Решение квадратного уравненения вида ax^2+bx+c=0\n");
@@ -23,18 +23,25 @@ int main(){
     printf("введите коэффициент b: ");
     scanf("%f", &b);
     printf("введите коэффициент c: ");
-    scanf("%f", &c);
-    if ((int) a == 0){
+    scanf("%f", &c);*\
+    
+    
+    /*if ((int) a == 0){
         if ((int) b == 0){printf("x - любое число");}
         else{printf("x = %f\n", linear_solution(b, c));}
-    }
-    else{
+    }*/
+    
+    
+    
+    /*else{
         float D = pow(b, 2) - 4 * a * c;
         if (D>= 0){
             if (D > 0){disc_solution(D, a, b);}
             else{printf("x = %f\n", -b/(2*a));}
         }
-        else{printf("Нет действительных корней\n");}
+        else{printf("Нет действительных корней\n");}*/
     }
+
+
     return 0;
 }

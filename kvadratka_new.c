@@ -23,6 +23,9 @@ int Kvadratic_solution(double a, double b, double c, double *x1, double *x2);
 /* runs main program, returns false in cause of error*/
 int Movement();
 
+/* works only for 6 digits, idk why*/
+double num_cutter(double num, int precision);
+
 int Tests();
 
 
@@ -91,21 +94,16 @@ int Kvadratic_solution(double a, double b, double c, double *x1, double *x2) {
     }
 
     if (is_zero(a)) {
-        return Linear_solution(b, c, x1);
-    }
+        if (is_zero(b)) {
+            if (is_zero(c)) return 8;
 
-    else if (is_zero(b) && is_zero(c)) {
-        *x1 = 0;
-        return 1;
+            else return 0;
+        }
+        else {
+            return Linear_solution(b, c, x1);
+        }
     }
-
-    else if (is_zero(c)) {
-        *x1 = 0;
-        Linear_solution(b, c, x2);
-        return 2;
-    }
-
-    else {/* contains 111 or 101*/
+    else {
         double D = pow(b, 2) - 4 *a * c;
 
         if (D > 0) {
@@ -123,6 +121,7 @@ int Kvadratic_solution(double a, double b, double c, double *x1, double *x2) {
             return 0;
         }
     }
+
 }
 
 
@@ -156,23 +155,29 @@ int Movement() {
 }
 
 
+double num_cutter(double num, int precision) {
+    return floor(num * pow(10, precision))/pow(10, precision);
+
+}
+
+
  int Tests(){
-    double a[5] =    {0, 1,  0, 0,  1};
-    double b[5] =    {0, 0,  2, 0,  4};
-    double c[5] =    {0, 0, -6, 1,  3};
-    double r_x1[5] = {0, 0,  3, 0, -1};
-    double r_x2[5] = {0, 0,  0, 0, -3};
-    int res[5] =     {8, 1,  1, 0,  2};
+    double a[7] =    {0, 1,  0, 0,  1, -1,  0.1};
+    double b[7] =    {0, 0,  2, 0,  4,  0,  4};
+    double c[7] =    {0, 0, -6, 1,  3,  4,  0.6};
+    double r_x1[7] = {0, 0,  3, 0, -1, -2, -0.151};
+    double r_x2[7] = {0, 0,  0, 0, -3,  2, -39.850};
+    int res[7] =     {8, 1,  1, 0,  2,  2,  2};
 
     int result = 0;
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 7; i++) {
         double x1 = 0;
         double x2 = 0;
 
         result = Kvadratic_solution(a[i], b[i], c[i], &x1, &x2);
 
-        if (!is_zero(x1-r_x1[i]) || !is_zero(x2-r_x2[i]) || result != res[i]) {
+        if (!is_zero(num_cutter(x1, 3)-r_x1[i]) || !is_zero(num_cutter(x2, 3)-r_x2[i]) || result != res[i]) {
             printf("Code failed on test %d.\n", i + 1);
             return 0;
         }

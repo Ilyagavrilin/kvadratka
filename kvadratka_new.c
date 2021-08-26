@@ -29,10 +29,6 @@ int input(double *factor, char name);
  */
 int is_zero(double val);
 
-int dbl_equals(double v1, double v2) {
-    return fabs(v1 - v1) < DBL_EPSILON;
-}
-
 /*! \brief solution of linear equation(ax + b = 0)
 *   \param [in] a, b coefficients of input linear equations
 *   \param [out] x root of linear equation

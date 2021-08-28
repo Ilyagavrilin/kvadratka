@@ -283,7 +283,7 @@ int is_nan(double x) {
 }
 
 void FailViewer(double a, double b, double c, int test_num, double x1_t, double x2_t,
-double x1_r, double x2_r, int nroots_t, int nroots_r, int ERR_CODE) {
+                double x1_r, double x2_r, int nroots_t, int nroots_r, int ERR_CODE) {
     printf("Program failed on test %d.\n", test_num);
     printf("Equation: %.3lf x^2 + %.3lf x + %.3lf = 0.\n", a, b, c);
     if (ERR_CODE == ERR_NROOTS) {
@@ -322,7 +322,6 @@ int SquareTests() {
         if (result != res[i]) {
             ERR_TYPE = ERR_NROOTS;
         }
-
         else if ((res[i] == 0 || res[i] == 8) && (!is_nan(x1) || !is_nan(x2))) {
             ERR_TYPE = ERR_ROOTS_VAL;
         }

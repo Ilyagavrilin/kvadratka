@@ -356,7 +356,7 @@ int Asker() {
     const char answer_no = 'n';
     char answer = 0;
 
-    scanf("%c", &answer);
+    scanf("%s", &answer);
 
     if (lower(answer) == answer_yes) {
         return TRUE;

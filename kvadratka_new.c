@@ -231,7 +231,7 @@ int ProgramContinuer() {
 
         printf("Continue program? Y/N \n");
 
-    } while (Asker() == TRUE);
+    } while (Asker(TRUE) == TRUE);
 
     return 0;
 }
@@ -284,8 +284,10 @@ int is_nan(double x) {
 
 void FailViewer(double a, double b, double c, int test_num, double x1_t, double x2_t,
                 double x1_r, double x2_r, int nroots_t, int nroots_r, int ERR_CODE) {
+
     printf("Program failed on test %d.\n", test_num);
     printf("Equation: %.3lf x^2 + %.3lf x + %.3lf = 0.\n", a, b, c);
+
     if (ERR_CODE == ERR_NROOTS) {
         printf("Fail in number of roots. Expected: %d. Returned: %d.\n", nroots_t, nroots_r);
     }
@@ -346,12 +348,13 @@ int SquareTests() {
 
 void CleanBuffer() {
     int buff_elem = 0;
+
     while (buff_elem != '\n' && buff_elem != EOF) {
         buff_elem = getchar();
     }
 }
 
-int Asker() {
+int Asker(int finish) {
     const char answer_yes = 'y';
     const char answer_no = 'n';
     char answer = 0;
@@ -362,6 +365,16 @@ int Asker() {
         return TRUE;
     }
     else if (lower(answer) == answer_no){
+        if (finish == TRUE) {
+            printf("Program finished.\n");
+        }
+        else if (finish == FALSE) {
+            printf("Answer confirmed, thanks.\n");
+        }
+        else {
+            printf("Error.\n")
+            return ERROR;
+        }
         return FALSE;
     }
     else {
@@ -372,7 +385,10 @@ int Asker() {
 
 int testRunner() {
     printf("Run tests?(Y/N) \n");
-    if (Asker() == TRUE) {
+
+    int answ = Asker(FALSE);
+
+    if (answ == TRUE) {
         if (!SquareTests()) {
             printf("Error in tests.\n");
             return ERROR;
@@ -381,7 +397,7 @@ int testRunner() {
             printf("Tests successfully passed.\n");
         }
     }
-    else if (Asker()) {
+    else if (answ == FALSE) {
         return 0;
     }
     else {

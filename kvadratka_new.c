@@ -93,7 +93,7 @@ int ProgramContinuer();
 */
 int SquareTests();
 
-int Asker();
+int Asker(int finish);
 
 /*! \brief function which prints on display information about failed test
 */
@@ -372,7 +372,7 @@ int Asker(int finish) {
             printf("Answer confirmed, thanks.\n");
         }
         else {
-            printf("Error.\n")
+            printf("Error.\n");
             return ERROR;
         }
         return FALSE;
